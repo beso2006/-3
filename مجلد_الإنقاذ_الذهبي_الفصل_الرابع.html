@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مجلد الإنقاذ الذهبي – الفصل الرابع: مهارات التفكير النقدي</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #FFD700;
+    --gold2: #FFC200;
+    --gold3: #FFAA00;
+    --gold-dark: #B8860B;
+    --gold-light: #FFF5CC;
+    --gold-pale: #FFFDE7;
+    --cream: #FFFCF0;
+    --rose: #FFF0F5;
+    --rose2: #FFE4EE;
+    --mint: #F0FFF8;
+    --sky: #EAF6FF;
+    --lavender: #F3F0FF;
+    --text-dark: #2D1B00;
+    --text-mid: #5C3D00;
+    --shadow-gold: 0 0 20px rgba(255,215,0,0.6), 0 0 45px rgba(255,200,0,0.25);
+    --shadow-card: 0 4px 24px rgba(180,130,0,0.13);
+    --border-gold: 2.5px solid var(--gold2);
+    --radius: 18px;
+    --radius-sm: 10px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+    background: linear-gradient(145deg, #FFF8DC 0%, #FFFBF0 40%, #FFF0F5 80%, #F0F8FF 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, #7B4F00 0%, #B8860B 25%, #FFD700 55%, #FFC107 75%, #FF8F00 100%);
+    padding: 40px 20px 34px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 50px rgba(150,100,0,0.4);
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 14px,
+      rgba(255,255,255,0.06) 14px, rgba(255,255,255,0.06) 28px
+    );
+    pointer-events: none;
+  }
+  .hero-particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .particle {
+    position: absolute; border-radius: 50%;
+    background: white; opacity: 0;
+    animation: particle-rise 4s infinite ease-in-out;
+  }
+  .particle:nth-child(1)  { width:5px; height:5px; left:10%; animation-delay:0s; }
+  .particle:nth-child(2)  { width:8px; height:8px; left:25%; animation-delay:0.7s; }
+  .particle:nth-child(3)  { width:4px; height:4px; left:50%; animation-delay:1.4s; }
+  .particle:nth-child(4)  { width:6px; height:6px; left:75%; animation-delay:2.1s; }
+  .particle:nth-child(5)  { width:9px; height:9px; left:90%; animation-delay:2.8s; }
+  @keyframes particle-rise {
+    0% { opacity:0; transform: translateY(60px) scale(0.5); }
+    30% { opacity:0.8; }
+    100% { opacity:0; transform: translateY(-60px) scale(1.2); }
+  }
+  .hero-vol {
+    display: inline-block;
+    background: rgba(0,0,0,0.2);
+    color: #FFE082; font-size: 0.78rem; font-weight: 800;
+    letter-spacing: 3px; padding: 5px 20px;
+    border-radius: 30px; margin-bottom: 14px;
+    border: 1.5px solid rgba(255,220,100,0.4);
+  }
+  .hero-title {
+    font-size: clamp(1.3rem, 5vw, 2.35rem);
+    font-weight: 900; color: #fff;
+    text-shadow: 0 2px 14px rgba(80,40,0,0.5), 0 0 35px rgba(255,240,100,0.55);
+    line-height: 1.45; margin-bottom: 10px;
+    animation: glow-pulse 2.8s ease-in-out infinite;
+  }
+  @keyframes glow-pulse {
+    0%,100% { text-shadow: 0 2px 14px rgba(80,40,0,0.5), 0 0 35px rgba(255,240,100,0.55); }
+    50% { text-shadow: 0 2px 22px rgba(80,40,0,0.6), 0 0 70px rgba(255,240,100,1); }
+  }
+  .hero-sub { color: rgba(255,255,255,0.93); font-size: clamp(0.85rem,2.5vw,1.1rem); font-weight: 600; }
+  .hero-badges {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 16px;
+  }
+  .hero-badge {
+    background: rgba(255,255,255,0.2); border: 1.5px solid rgba(255,255,255,0.45);
+    border-radius: 30px; padding: 6px 16px;
+    font-size: 0.8rem; font-weight: 700; color: #fff;
+    backdrop-filter: blur(6px);
+  }
+
+  /* ===== SKILL TABS ===== */
+  .skill-nav {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    padding: 16px 14px 10px;
+    background: rgba(255,248,200,0.75);
+    border-bottom: 2.5px solid var(--gold2);
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+  .skill-tab {
+    padding: 8px 14px; border-radius: 30px;
+    border: 2px solid var(--gold2); background: white;
+    color: var(--text-mid); font-size: 0.78rem; font-weight: 700;
+    cursor: pointer; transition: all 0.25s;
+    font-family: 'Cairo', sans-serif; white-space: nowrap;
+  }
+  .skill-tab:hover, .skill-tab.active {
+    background: var(--gold); color: var(--text-dark);
+    box-shadow: var(--shadow-gold); transform: translateY(-2px);
+  }
+
+  /* ===== CONTAINER ===== */
+  .container { max-width: 920px; margin: 0 auto; padding: 26px 14px 70px; }
+  .panel { display: none; animation: fadeIn 0.4s ease; }
+  .panel.active { display: block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
+
+  /* ===== SECTION HEADER ===== */
+  .sec-header {
+    background: linear-gradient(135deg, #8B6914, #C9900C, #FFD700 60%, #FFC107);
+    border-radius: var(--radius);
+    padding: 22px 26px; margin-bottom: 22px;
+    box-shadow: var(--shadow-gold);
+    position: relative; overflow: hidden;
+  }
+  .sec-header::before {
+    content: '✦';
+    position: absolute; left: 20px; top:50%; transform:translateY(-50%);
+    font-size:3rem; opacity:0.12; color:white;
+  }
+  .sec-header h2 { font-size: clamp(1.05rem,3.5vw,1.45rem); font-weight:900; color:white; text-shadow:0 2px 8px rgba(0,0,0,0.35); }
+  .sec-header p { color:rgba(255,255,255,0.9); font-size:0.87rem; margin-top:5px; font-weight:600; }
+
+  /* ===== GOLD CARD ===== */
+  .gold-card {
+    background: white; border: var(--border-gold);
+    border-radius: var(--radius); padding: 22px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-card), 0 0 0 1px rgba(255,215,0,0.12);
+    transition: all 0.25s;
+  }
+  .gold-card:hover { box-shadow: var(--shadow-gold), var(--shadow-card); transform:translateY(-2px); }
+  .card-title {
+    font-size:1.05rem; font-weight:800; color:var(--gold-dark);
+    margin-bottom:14px; padding-bottom:10px;
+    border-bottom:2px dashed var(--gold2);
+    display:flex; align-items:center; gap:8px;
+  }
+  .card-title .icon { font-size:1.3rem; }
+
+  /* ===== GOLD TABLE ===== */
+  .gold-table {
+    width:100%; border-collapse:separate; border-spacing:0;
+    border-radius:var(--radius); overflow:hidden;
+    box-shadow:var(--shadow-card); font-size:0.85rem;
+  }
+  .gold-table thead tr { background:linear-gradient(90deg,#8B6914,#FFD700); }
+  .gold-table thead th { padding:13px 16px; color:white; font-weight:800; text-align:right; }
+  .gold-table tbody tr:nth-child(even) { background:var(--gold-pale); }
+  .gold-table tbody tr:nth-child(odd) { background:white; }
+  .gold-table tbody tr:hover { background:#FFF8CC; }
+  .gold-table tbody td { padding:12px 16px; border-bottom:1px solid rgba(255,200,0,0.2); font-weight:600; color:var(--text-dark); line-height:1.7; vertical-align:top; }
+  .gold-table tbody td:first-child { font-weight:800; color:var(--gold-dark); min-width:130px; }
+
+  /* ===== COMPARE TABLE ===== */
+  .cmp-table {
+    width:100%; border-collapse:separate; border-spacing:0;
+    border-radius:var(--radius); overflow:hidden; font-size:0.83rem;
+    box-shadow:var(--shadow-card);
+  }
+  .cmp-table thead tr { background:linear-gradient(90deg,#8B6914,#FFD700); }
+  .cmp-table thead th { padding:12px 14px; color:white; font-weight:800; text-align:center; }
+  .cmp-table .lbl { background:var(--gold-pale)!important; font-weight:800; color:var(--gold-dark); text-align:center; font-size:0.8rem; white-space:nowrap; }
+  .cmp-table tbody tr:nth-child(odd) td:nth-child(2) { background:#E8F5E9; }
+  .cmp-table tbody tr:nth-child(odd) td:nth-child(3) { background:#FFEBE9; }
+  .cmp-table tbody tr:nth-child(even) td:nth-child(2) { background:#F0FFF4; }
+  .cmp-table tbody tr:nth-child(even) td:nth-child(3) { background:#FFF5F5; }
+  .cmp-table tbody td { padding:11px 13px; font-weight:600; color:var(--text-dark); border-bottom:1px solid rgba(0,0,0,0.06); line-height:1.65; vertical-align:top; }
+
+  /* ===== HIGHLIGHT BOX ===== */
+  .hl-box {
+    background:linear-gradient(135deg,#FFF8E1,#FFFDE7);
+    border-right:5px solid var(--gold);
+    border-radius:var(--radius-sm);
+    padding:14px 18px; margin:14px 0;
+    font-size:0.88rem; font-weight:700;
+    color:var(--text-dark); line-height:1.8;
+    box-shadow:-4px 0 20px rgba(255,200,0,0.13);
+  }
+  .hl-box.rose { background:linear-gradient(135deg,#FFF0F5,#FFE4EE); border-right-color:#FF80AB; box-shadow:-4px 0 20px rgba(255,100,150,0.1); }
+  .hl-box.mint { background:linear-gradient(135deg,#F0FFF8,#CCFFE8); border-right-color:#00BFA5; }
+  .hl-box.sky  { background:linear-gradient(135deg,#EAF6FF,#CCE8FF); border-right-color:#1E88E5; }
+
+  /* ===== ACCORDION ===== */
+  .acc { margin-bottom:12px; }
+  .acc-hdr {
+    background:linear-gradient(90deg,var(--gold-pale),#FFFDE7);
+    border:2px solid var(--gold2); border-radius:var(--radius-sm);
+    padding:14px 18px; cursor:pointer;
+    display:flex; justify-content:space-between; align-items:center;
+    font-weight:800; font-size:0.9rem; color:var(--text-dark);
+    transition:all 0.2s; user-select:none;
+  }
+  .acc-hdr:hover { background:var(--gold); box-shadow:var(--shadow-gold); }
+  .acc-hdr .ch { transition:transform 0.3s; font-size:0.95rem; }
+  .acc-hdr.open .ch { transform:rotate(180deg); }
+  .acc-body {
+    max-height:0; overflow:hidden;
+    transition:max-height 0.4s ease, padding 0.3s;
+    background:white; border:2px solid var(--gold2); border-top:none;
+    border-radius:0 0 var(--radius-sm) var(--radius-sm);
+    padding:0 18px;
+  }
+  .acc-body.open { max-height:3000px; padding:18px; }
+  .acc-body p, .acc-body li { font-size:0.88rem; font-weight:600; color:var(--text-dark); line-height:1.8; }
+  .acc-body ul { padding-right:18px; }
+  .acc-body li { margin-bottom:6px; }
+
+  /* ===== EXAMPLE BOXES ===== */
+  .example-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; }
+  .ex-card {
+    border-radius:var(--radius-sm); padding:16px;
+    border:2px solid; font-size:0.86rem; font-weight:600; line-height:1.75;
+  }
+  .ex-card.correct { background:#E8F5E9; border-color:#81C784; }
+  .ex-card.wrong   { background:#FFEBEE; border-color:#EF9A9A; }
+  .ex-card .ex-label { font-weight:800; font-size:0.82rem; margin-bottom:8px; display:block; }
+  .ex-card.correct .ex-label { color:#2E7D32; }
+  .ex-card.wrong   .ex-label { color:#C62828; }
+
+  /* ===== STEPS ===== */
+  .steps { display:flex; flex-direction:column; gap:0; }
+  .step { display:flex; gap:14px; align-items:flex-start; position:relative; padding-bottom:18px; }
+  .step::before { content:''; position:absolute; right:19px; top:42px; bottom:0; width:2px; background:var(--gold2); }
+  .step:last-child::before { display:none; }
+  .step:last-child { padding-bottom:0; }
+  .step-n {
+    background:linear-gradient(135deg,#8B6914,#FFD700);
+    color:white; font-weight:900; font-size:0.88rem;
+    min-width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; box-shadow:0 0 14px rgba(255,200,0,0.5); z-index:1;
+  }
+  .step-c { background:white; border:2px solid var(--gold2); border-radius:var(--radius-sm); padding:12px 16px; flex:1; }
+  .step-c .st { font-size:0.88rem; font-weight:800; color:var(--gold-dark); margin-bottom:4px; }
+  .step-c .sd { font-size:0.83rem; font-weight:600; color:var(--text-dark); line-height:1.6; }
+
+  /* ===== SKILL BADGES ===== */
+  .skill-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; }
+  .skill-badge {
+    background:linear-gradient(135deg,#FFF8CC,#FFE082);
+    border:2px solid var(--gold2); border-radius:var(--radius-sm);
+    padding:14px 14px; text-align:center;
+    box-shadow:0 0 12px rgba(255,200,0,0.18); transition:all 0.2s;
+  }
+  .skill-badge:hover { box-shadow:var(--shadow-gold); transform:scale(1.04); }
+  .skill-badge .sk-icon { font-size:1.7rem; margin-bottom:6px; }
+  .skill-badge .sk-num { font-size:0.72rem; font-weight:800; color:var(--gold-dark); }
+  .skill-badge .sk-name { font-size:0.88rem; font-weight:800; color:var(--text-dark); margin-top:2px; }
+
+  /* ===== DIVIDER ===== */
+  .gold-div {
+    height:3px;
+    background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),var(--gold),transparent);
+    border-radius:2px; margin:24px 0;
+    box-shadow:0 0 14px rgba(255,200,0,0.5);
+  }
+
+  /* ===== QUIZ ===== */
+  .quiz-stats {
+    background:var(--gold-pale); border:var(--border-gold);
+    border-radius:var(--radius-sm); padding:12px 18px;
+    display:flex; gap:20px; flex-wrap:wrap; margin-bottom:18px; font-size:0.85rem;
+  }
+  .qstat { display:flex; align-items:center; gap:6px; font-weight:700; }
+  .qstat span { color:var(--gold-dark); font-size:1.1rem; font-weight:900; }
+  .qctrl { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+  .qbtn {
+    padding:8px 16px; border:2px solid var(--gold2); border-radius:30px;
+    background:white; color:var(--text-mid);
+    font-family:'Cairo',sans-serif; font-size:0.8rem; font-weight:700;
+    cursor:pointer; transition:all 0.2s;
+  }
+  .qbtn.active, .qbtn:hover { background:var(--gold); color:var(--text-dark); box-shadow:var(--shadow-gold); }
+  .prog-wrap { background:rgba(255,200,0,0.15); border-radius:20px; height:8px; overflow:hidden; margin:10px 0 20px; }
+  .prog-fill { height:100%; background:linear-gradient(90deg,#8B6914,#FFD700); border-radius:20px; box-shadow:0 0 8px rgba(255,200,0,0.6); transition:width 0.5s ease; }
+
+  .q-card {
+    background:white; border:var(--border-gold);
+    border-radius:var(--radius); padding:20px;
+    margin-bottom:14px; box-shadow:var(--shadow-card);
+    transition:all 0.2s;
+  }
+  .q-card:hover { box-shadow:var(--shadow-gold); }
+  .q-hdr { display:flex; gap:12px; align-items:flex-start; margin-bottom:12px; }
+  .q-num {
+    background:var(--gold); color:var(--text-dark); font-weight:900; font-size:0.8rem;
+    min-width:34px; height:34px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    box-shadow:0 0 10px rgba(255,200,0,0.4);
+  }
+  .q-badge { display:inline-block; padding:3px 10px; border-radius:20px; font-size:0.72rem; font-weight:700; margin-bottom:5px; }
+  .q-badge.tf { background:#E8F5E9; color:#2E7D32; border:1.5px solid #81C784; }
+  .q-badge.mc { background:#E3F2FD; color:#1565C0; border:1.5px solid #64B5F6; }
+  .q-text { font-size:0.9rem; font-weight:700; color:var(--text-dark); line-height:1.7; }
+  .q-opts { margin-top:10px; display:flex; flex-direction:column; gap:7px; }
+  .q-opt { padding:9px 13px; border:1.5px solid #E0E0E0; border-radius:var(--radius-sm); font-size:0.84rem; font-weight:600; color:var(--text-dark); background:#FAFAFA; }
+  .reveal-btn {
+    background:linear-gradient(135deg,#8B6914,#FFD700);
+    color:white; border:none; border-radius:30px;
+    padding:10px 22px; font-family:'Cairo',sans-serif;
+    font-size:0.84rem; font-weight:800; cursor:pointer;
+    display:flex; align-items:center; gap:8px; margin-top:14px;
+    box-shadow:0 4px 14px rgba(150,100,0,0.3); transition:all 0.2s;
+  }
+  .reveal-btn:hover { transform:translateY(-2px); box-shadow:var(--shadow-gold); }
+  .ans-box {
+    display:none; background:linear-gradient(135deg,#FFFDE7,#FFF8CC);
+    border:2px solid var(--gold2); border-radius:var(--radius-sm);
+    padding:14px 16px; margin-top:12px;
+    animation:slideDown 0.35s ease;
+  }
+  .ans-box.visible { display:block; }
+  @keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:none} }
+  .ans-label { font-size:0.74rem; font-weight:800; color:var(--gold-dark); margin-bottom:6px; letter-spacing:1px; }
+  .ans-text { font-size:0.88rem; font-weight:800; color:#1B5E20; }
+  .ans-explain { font-size:0.82rem; font-weight:600; color:#555; margin-top:6px; line-height:1.6; border-top:1px solid rgba(255,200,0,0.3); padding-top:8px; }
+
+  /* ===== SCROLL TOP ===== */
+  .scroll-top {
+    position:fixed; bottom:22px; left:22px;
+    background:var(--gold); border:none; border-radius:50%;
+    width:48px; height:48px; font-size:1.3rem;
+    cursor:pointer; box-shadow:var(--shadow-gold);
+    z-index:999; transition:all 0.2s;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .scroll-top:hover { transform:scale(1.15); }
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:600px) {
+    .skill-nav { padding:10px 10px 8px; gap:5px; }
+    .skill-tab { padding:6px 10px; font-size:0.73rem; }
+    .example-grid { grid-template-columns:1fr; }
+    .skill-list { grid-template-columns:repeat(2,1fr); }
+    .cmp-table { font-size:0.75rem; }
+    .cmp-table tbody td { padding:8px 10px; }
+    .hero { padding:28px 14px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-particles">
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div>
+  </div>
+  <div class="hero-vol">📁 المجلد الذهبي – المجلد الثاني</div>
+  <div class="hero-title">⚠️ مجلد الإنقاذ الذهبي<br>الفصل الرابع كاملاً ومضموناً للفاينل! 🏆</div>
+  <div class="hero-sub">تطبيقات على مهارات التفكير النقدي – 7 مهارات محورية</div>
+  <div class="hero-badges">
+    <div class="hero-badge">📚 7 مهارات كاملة</div>
+    <div class="hero-badge">🔬 أمثلة موسوعية</div>
+    <div class="hero-badge">🏆 80 سؤال تفاعلي</div>
+    <div class="hero-badge">📱 متوافق مع الموبايل</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="skill-nav" id="skillNav">
+  <button class="skill-tab active" onclick="show('s0',this)">🗺️ خريطة المهارات</button>
+  <button class="skill-tab" onclick="show('s1',this)">1️⃣ حقائق وآراء</button>
+  <button class="skill-tab" onclick="show('s2',this)">2️⃣ الافتراضات</button>
+  <button class="skill-tab" onclick="show('s3',this)">3️⃣ الاستنتاج</button>
+  <button class="skill-tab" onclick="show('s4',this)">4️⃣ الاستقراء</button>
+  <button class="skill-tab" onclick="show('s5',this)">5️⃣ الاستنباط</button>
+  <button class="skill-tab" onclick="show('s6',this)">6️⃣ التفسير</button>
+  <button class="skill-tab" onclick="show('s7',this)">7️⃣ تقويم الحجج</button>
+  <button class="skill-tab" onclick="show('sq',this)">🏆 بنك الأسئلة (80)</button>
+</div>
+
+<div class="container">
+
+<!-- ========== SKILL MAP ========== -->
+<div class="panel active" id="s0">
+  <div class="sec-header">
+    <h2>🗺️ خريطة مهارات التفكير النقدي – الفصل الرابع</h2>
+    <p>نظرة شاملة على المهارات السبع قبل الخوض في التفاصيل</p>
+  </div>
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">⭐</span>المهارات السبع الأساسية للتفكير النقدي</div>
+    <div class="skill-list">
+      <div class="skill-badge"><div class="sk-icon">⚖️</div><div class="sk-num">المهارة 1</div><div class="sk-name">التمييز بين الحقائق والآراء</div></div>
+      <div class="skill-badge"><div class="sk-icon">🔍</div><div class="sk-num">المهارة 2</div><div class="sk-name">التعرف على الافتراضات</div></div>
+      <div class="skill-badge"><div class="sk-icon">💡</div><div class="sk-num">المهارة 3</div><div class="sk-name">الكشف عن الصحة والخطأ في الاستنتاج</div></div>
+      <div class="skill-badge"><div class="sk-icon">🔬</div><div class="sk-num">المهارة 4</div><div class="sk-name">مهارة الاستقراء</div></div>
+      <div class="skill-badge"><div class="sk-icon">🧮</div><div class="sk-num">المهارة 5</div><div class="sk-name">مهارة الاستنباط</div></div>
+      <div class="skill-badge"><div class="sk-icon">🌐</div><div class="sk-num">المهارة 6</div><div class="sk-name">مهارة التفسير</div></div>
+      <div class="skill-badge"><div class="sk-icon">🗣️</div><div class="sk-num">المهارة 7</div><div class="sk-name">مهارة تقويم الحجج</div></div>
+    </div>
+  </div>
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">🧠</span>مقدمة: ما هي أهمية مهارات التفكير النقدي؟</div>
+    <div class="hl-box">
+      مهارات التفكير النقدي هي الأدوات العقلية التي تُمكّن الفرد من <strong>تحليل المعلومات وتقييمها واتخاذ قرارات مدروسة</strong>. وتُقسم إلى سبع مهارات محورية، كل منها تُعالج جانباً مختلفاً من عملية التفكير النقدي.
+    </div>
+    <table class="gold-table">
+      <thead><tr><th>المهارة</th><th>جوهرها</th><th>السؤال الذي تجيب عنه</th></tr></thead>
+      <tbody>
+        <tr><td>التمييز بين الحقائق والآراء</td><td>فصل الموضوعي عن الذاتي</td><td>هل هذا قابل للإثبات أم مجرد تقييم شخصي؟</td></tr>
+        <tr><td>التعرف على الافتراضات</td><td>اكتشاف المسلمات الضمنية</td><td>ماذا يُسلّم به الشخص دون تصريح؟</td></tr>
+        <tr><td>الاستنتاج</td><td>تقييم صحة الخلاصات</td><td>هل هذه النتيجة تنبثق فعلاً من المعطيات؟</td></tr>
+        <tr><td>الاستقراء</td><td>من الجزء إلى الكل</td><td>هل الأمثلة الجزئية تدعم القاعدة العامة؟</td></tr>
+        <tr><td>الاستنباط</td><td>من الكل إلى الجزء</td><td>هل تنطبق القاعدة العامة على هذه الحالة؟</td></tr>
+        <tr><td>التفسير</td><td>إيجاد الأسباب الحقيقية</td><td>لماذا حدث هذا؟ ما أسبابه الجوهرية؟</td></tr>
+        <tr><td>تقويم الحجج</td><td>وزن الأدلة والبراهين</td><td>هل هذه الحجة قوية أم ضعيفة؟ وكيف أدحضها؟</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ========== SKILL 1: FACTS vs OPINIONS ========== -->
+<div class="panel" id="s1">
+  <div class="sec-header">
+    <h2>⚖️ المهارة الأولى: التمييز بين الحقائق والآراء</h2>
+    <p>Distinguishing Facts from Opinions</p>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">📖</span>التعريفات الأساسية</div>
+    <div class="acc">
+      <div class="acc-hdr" onclick="tAcc(this)">تعريف الحقيقة (الواقعة) <span class="ch">▼</span></div>
+      <div class="acc-body">
+        <p>الحقيقة (أو الواقعة) هي <strong>معلومة تقريرية يمكن ملاحظتها أو التحقق منها أو التأكد من دقتها</strong>.</p>
+        <br>
+        <p>خصائصها:</p>
+        <ul>
+          <li>أمور حدثت بالفعل في الماضي.</li>
+          <li>تحتوي على أرقام ومعلومات واضحة ودقيقة.</li>
+          <li>لها مصادر موثقة.</li>
+          <li>تشمل التجارب الشخصية والعامة والأمثلة الواقعية.</li>
+          <li><strong>يتفق الجميع على أنها شيء يمكن إثباته.</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc">
+      <div class="acc-hdr" onclick="tAcc(this)">تعريف الرأي <span class="ch">▼</span></div>
+      <div class="acc-body">
+        <p>الرأي هو <strong>تعبير عن تقييم يعتمد على الحكم الشخصي أو الانطباع أو الاعتقاد</strong>، ويمكن الوثوق به أو عدم الوثوق به.</p>
+        <br>
+        <p>خصائصه:</p>
+        <ul>
+          <li>يشتمل على الشعور والحكم المسبق والاعتقاد المتوقع.</li>
+          <li>يختلف باختلاف الأشخاص — الأشياء الذاتية آراء.</li>
+          <li>لا يوجد عليه اتفاق عام.</li>
+          <li>يُنظر إليه كوجهة نظر شخصية توصل إليها الشخص بعد تأمل أو بحث.</li>
+          <li>للقارئ أن يقبله أو يرفضه.</li>
+          <li>لا يمثل مادة ذات وزن في دعم الأدلة إلا إذا اعتمد على معلومات موثقة.</li>
+          <li>مفيد في تشكيل وتقييم تفكير الفرد.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">📊</span>جدول المقارنة الشامل: الحقائق مقابل الآراء</div>
+    <div style="overflow-x:auto;">
+    <table class="cmp-table">
+      <thead><tr><th style="min-width:100px;">وجه المقارنة</th><th style="min-width:180px;">✅ الحقائق (الوقائع)</th><th style="min-width:180px;">💭 الآراء</th></tr></thead>
+      <tbody>
+        <tr><td class="lbl">الأساس</td><td>تُبنى على خبرات عدد كبير من الناس</td><td>مبنية على ما يعتقد الفرد أنه صحيح</td></tr>
+        <tr><td class="lbl">القبول</td><td>عدد قليل جداً من الناس لا يتقبلون الحقائق</td><td>عدد أكبر من الناس لا يتفقون مع الآراء</td></tr>
+        <tr><td class="lbl">المحتوى</td><td>تحوي معلومات رقمية وأمثلة محددة</td><td>ليست أكثر من مقولات عامة لم تُثبت فعلياً</td></tr>
+        <tr><td class="lbl">الزمن</td><td>وقعت أو وجدت في الماضي</td><td>من المحتمل أن تحدث مستقبلاً (أو حدثت في الماضي)</td></tr>
+        <tr><td class="lbl">مثال 1</td><td>مجموع زوايا المثلث يساوي 180 درجة.</td><td>تخصص الطب البيطري أفضل من الطب البشري.</td></tr>
+        <tr><td class="lbl">مثال 2</td><td>تُقسم الكلمة إلى اسم وفعل وحرف.</td><td>تعلم الرياضيات أصعب من تعلم الإنجليزية.</td></tr>
+        <tr><td class="lbl">مثال 3</td><td>—</td><td>المدارس الخاصة أفضل من المدارس الحكومية.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">💡</span>كيف أميّز الرأي من الحقيقة؟ – نصائح ذهبية</div>
+    <div class="hl-box">✅ <strong>الحقيقة:</strong> يمكنك التحقق منها بالبحث، القياس، التجربة — لا تتغير بتغير الشخص.</div>
+    <div class="hl-box rose">💭 <strong>الرأي:</strong> ابحث عن كلمات مثل "أفضل، أسهل، أصعب، أجمل، يجب" — إشارات واضحة على الطابع الشخصي.</div>
+    <div class="hl-box mint">⚠️ <strong>الاستثناء:</strong> الرأي يكتسب وزناً في الأدلة فقط عندما يُدعم بمعلومات موثقة.</div>
+  </div>
+</div>
+
+<!-- ========== SKILL 2: ASSUMPTIONS ========== -->
+<div class="panel" id="s2">
+  <div class="sec-header">
+    <h2>🔍 المهارة الثانية: التعرف على الافتراضات</h2>
+    <p>Recognizing Assumptions</p>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">📖</span>التعريف الكامل</div>
+    <div class="hl-box sky">
+      <strong>الافتراض:</strong> هو الشيء الذي يُسلّم به الشخص ويعتبره بديهياً، ويكون منطلقاً لأقواله وأفعاله وكتاباته.
+    </div>
+    <div class="hl-box">
+      <strong>مهارة التعرف على الافتراض:</strong> هي قدرة الفرد على تحديد المسلمات التي ينطلق منها الآخرون في أقوالهم وأفعالهم وكتاباتهم. وتُعرَّف أيضاً بأنها: <strong>قضية مسلمة أو موضوعة للاستدلال بها على غيرها</strong>.
+    </div>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">📝</span>الأمثلة التطبيقية الثلاثة</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-c">
+          <div class="st">مثال المعطف والمظلة</div>
+          <div class="sd"><strong>القول:</strong> "سأرتدي اليوم معطفي وأحمل مظلتي عندما أذهب إلى الجامعة."<br><strong>الافتراض الضمني:</strong> أن الجو ممطر وبارد هذا اليوم.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <div class="step-c">
+          <div class="st">مثال التخرج من الجامعة</div>
+          <div class="sd"><strong>القول:</strong> "سوف أتخرج من الجامعة في شهر يونيه القادم."<br><strong>الافتراضات الضمنية:</strong> أنه سيعيش حتى يونيه القادم، وأنه سيبقى في الجامعة حتى ذلك الوقت، وأنه سينجح في مقرراته الدراسية.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <div class="step-c">
+          <div class="st">مثال تحذير قيادة السيارات</div>
+          <div class="sd"><strong>التنبيه:</strong> "يجب أخذ الحيطة والحذر عند قيادة السيارات على الطرق."<br><strong>الافتراض الضمني:</strong> وجود مخاطر متعددة قد تواجهنا أثناء السير على الطرق.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">🎯</span>قاعدة ذهبية للتعرف على الافتراضات</div>
+    <div class="hl-box">اسأل دائماً: <strong>"ماذا يجب أن يكون صحيحاً حتى يكون هذا القول/الفعل منطقياً؟"</strong> — الإجابة هي الافتراض الضمني.</div>
+  </div>
+</div>
+
+<!-- ========== SKILL 3: INFERENCE ========== -->
+<div class="panel" id="s3">
+  <div class="sec-header">
+    <h2>💡 المهارة الثالثة: الكشف عن الصحة والخطأ في الاستنتاج</h2>
+    <p>Evaluating Inferences</p>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">📖</span>التعريفات الكاملة</div>
+    <div class="hl-box sky">
+      <strong>مهارة الاستنتاج:</strong> نتيجة يستخلصها الشخص من معلومات أو بيانات أو وقائع لوحظت أو افترضت على اعتبار صدق هذه المعلومات أو البيانات أو الوقائع.
+    </div>
+    <div class="hl-box">
+      <strong>تعريف آخر للاستنتاجات:</strong> خلاصة عقلية لموقف معين، تعتمد على افتراضات سابقة.
+    </div>
+    <div class="hl-box mint">
+      <strong>من أين يأتي الاستنتاج؟</strong> يأتي من <strong>معطيات أو سياقات</strong> تحمل في طياتها ما يدعم نتيجة ما — والاستنتاج نتيجة مترتبة على هذه المعطيات.
+    </div>
+    <div class="hl-box rose">
+      <strong>المهارة الرئيسية:</strong> تقدير درجة صحة الاستنتاج في ضوء المعطيات التي انبثق منها.
+    </div>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">✅❌</span>مقارنة: استنتاج صحيح مقابل استنتاج خاطئ</div>
+    <div class="example-grid">
+      <div class="ex-card correct">
+        <span class="ex-label">✅ استنتاج صحيح</span>
+        <strong>الموقف:</strong> طبّق باحث دراسة في الذكاء على طلاب إحدى الشعب. وأظهرت النتائج أن الطلاب الحاصلين على درجات مرتفعة في اختبار الذكاء هم أوائل الشعبة في مختلف المواد.
+        <br><br>
+        <strong>الاستنتاج:</strong> هناك علاقة وثيقة بين درجة الذكاء والتفوق الدراسي.
+        <br><br>
+        <strong>لماذا هو صحيح؟</strong> لأن الطلاب المتفوقين في الدراسة تفوقوا في اختبار الذكاء — النتيجة تنبثق مباشرة من المعطيات.
+      </div>
+      <div class="ex-card wrong">
+        <span class="ex-label">❌ استنتاج خاطئ</span>
+        <strong>الموقف:</strong> أُقيمت مسابقة لاختيار الطالب المثالي. نال خالد أغلب الأصوات، وحصل الطلاب الآخرون على أصوات أقل نسبياً.
+        <br><br>
+        <strong>الاستنتاج الخاطئ:</strong> الطلاب الآخرون غير متفوقين اجتماعياً.
+        <br><br>
+        <strong>لماذا هو خاطئ؟</strong> لأن هؤلاء الطلاب نالوا أصواتاً — ولو كانوا غير متفوقين اجتماعياً لم ينل أحد منهم أي أصوات.
+      </div>
+    </div>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">🎯</span>كيف تتحقق من صحة الاستنتاج؟</div>
+    <div class="steps">
+      <div class="step"><div class="step-n">1</div><div class="step-c"><div class="st">اجمع المعطيات</div><div class="sd">حدد كل المعلومات والبيانات الواردة في الموقف.</div></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-c"><div class="st">افحص الاستنتاج</div><div class="sd">هل الاستنتاج يتبع بشكل منطقي ومباشر من هذه المعطيات؟</div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="st">ابحث عن استنتاجات بديلة</div><div class="sd">هل هناك تفسيرات أخرى ممكنة للمعطيات نفسها؟</div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="st">الحكم النهائي</div><div class="sd">إذا كان الاستنتاج الوحيد المنطقي للمعطيات → صحيح. إذا كانت هناك احتمالات أخرى أو يتجاوز المعطيات → خاطئ.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SKILL 4: INDUCTION ========== -->
+<div class="panel" id="s4">
+  <div class="sec-header">
+    <h2>🔬 المهارة الرابعة: مهارة الاستقراء</h2>
+    <p>Inductive Reasoning – من الجزء إلى الكل</p>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">📖</span>تعريف الاستقراء</div>
+    <div class="hl-box sky">
+      <strong>الاستقراء:</strong> هو انتقال العقل من الحوادث الجزئية إلى القواعد والأحكام الكلية التي تنظّم الحوادث والحالات.
+    </div>
+    <table class="gold-table">
+      <thead><tr><th>خاصية</th><th>التوضيح</th></tr></thead>
+      <tbody>
+        <tr><td>الاتجاه</td><td>من <strong>الخاص إلى العام</strong>، ومن الجزء إلى الكل، ومن المثال إلى القاعدة</td></tr>
+        <tr><td>الهدف</td><td>البحث عن الجزئيات أولاً للوصول إلى قاعدة عامة</td></tr>
+        <tr><td>الغاية</td><td>معرفة الحقائق والأحكام العامة</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">📂</span>أنواع الاستقراء — أولاً: من حيث الصحة والخطأ</div>
+    <div style="overflow-x:auto;">
+    <table class="cmp-table">
+      <thead><tr><th>وجه المقارنة</th><th>✅ الاستقراء العلمي</th><th>❌ الاستقراء غير العلمي</th></tr></thead>
+      <tbody>
+        <tr><td class="lbl">التعريف</td><td>مبني على الأسس والحقائق العلمية وليس على الآراء الذاتية</td><td>غير موضوعي، مبني على الآراء الذاتية والتصورات الفردية — في الغالب استقراء خاطئ</td></tr>
+        <tr><td class="lbl">المثال</td><td>الحديد معدن يتمدد بالحرارة، والنحاس معدن يتمدد، والألمنيوم معدن يتمدد → إذاً المعادن تتمدد بالحرارة.</td><td>رصد بعض الناس سلوكيات سلبية لأفراد من شعب أخرى (كالبخل) فيُعمّمون على جميع أفراد تلك الشعوب.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">📂</span>أنواع الاستقراء — ثانياً: من حيث الشمول</div>
+    <div style="overflow-x:auto;">
+    <table class="cmp-table">
+      <thead><tr><th>وجه المقارنة</th><th>✅ الاستقراء الكامل (العلمي)</th><th>⚠️ الاستقراء الناقص (غير العلمي)</th></tr></thead>
+      <tbody>
+        <tr><td class="lbl">التعريف</td><td>يشمل <strong>جميع حالات الظاهرة</strong> التي تم استقراؤها — أي بنسبة 100%</td><td>لا يغطي جميع الحالات، بل <strong>عينة منها</strong> فقط</td></tr>
+        <tr><td class="lbl">المثال</td><td>باحث سأل <strong>كل</strong> طلاب السنة التمهيدية للدكتوراه عن درجاتهم في مقرر معين، فأجابوا بأنهم حصلوا على أكثر من 60 → جميعهم نجحوا.</td><td>الحديد والنحاس والألمنيوم تتمدد → إذاً المعادن تتمدد. (ناقص لأنه يصعب حصر جميع المعادن، لكن العلماء طبّقوه على عينة كبيرة)</td></tr>
+        <tr><td class="lbl">الموثوقية</td><td>أعلى موثوقية — يشمل الجميع</td><td>موثوقية أقل، لكن مقبول إذا كانت العينة كبيرة وممثلة</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="hl-box mint" style="margin-top:14px;">
+      <strong>ملاحظة مهمة:</strong> نفس المثال (المعادن والحرارة) يُعدّ استقراءً علمياً من حيث الصحة والخطأ، لكن استقراءً ناقصاً من حيث الشمول — لأن من المستحيل اختبار كل حديدة في الكرة الأرضية.
+    </div>
+  </div>
+</div>
+
+<!-- ========== SKILL 5: DEDUCTION ========== -->
+<div class="panel" id="s5">
+  <div class="sec-header">
+    <h2>🧮 المهارة الخامسة: مهارة الاستنباط</h2>
+    <p>Deductive Reasoning – من الكل إلى الجزء</p>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">📖</span>تعريف الاستنباط والفرق بينه وبين الاستقراء</div>
+    <div class="hl-box sky">
+      <strong>الاستنباط:</strong> هو <strong>عكس الاستقراء</strong>. إذا كان الاستقراء ينتقل من الجزء إلى الكل، فالاستنباط ينتقل من <strong>الكل إلى الجزء</strong> — أي استخلاص الفرد نتائج جزئية في ضوء قاعدة عامة أو مبدأ عام.
+    </div>
+    <div style="overflow-x:auto;">
+    <table class="cmp-table">
+      <thead><tr><th>المعيار</th><th>🔬 الاستقراء</th><th>🧮 الاستنباط</th></tr></thead>
+      <tbody>
+        <tr><td class="lbl">الاتجاه</td><td>من الجزء ← إلى الكل</td><td>من الكل ← إلى الجزء</td></tr>
+        <tr><td class="lbl">الانطلاق</td><td>من أمثلة ومشاهدات</td><td>من قاعدة عامة مقبولة</td></tr>
+        <tr><td class="lbl">الهدف</td><td>بناء قاعدة عامة</td><td>تطبيق القاعدة على حالة فردية</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">⚙️</span>مكونات الاستنباط الثلاثة</div>
+    <div class="hl-box">الاستنباط يتكون من: <strong>المقدمة الكبرى + المقدمة الصغرى = النتيجة</strong></div>
+    <table class="gold-table" style="margin-top:14px;">
+      <thead><tr><th>المكوّن</th><th>التعريف</th></tr></thead>
+      <tbody>
+        <tr><td>المقدمة الكبرى (الأولى)</td><td>قاعدة كلية مقبولة وصادقة</td></tr>
+        <tr><td>المقدمة الصغرى (الثانية)</td><td>حالات فردية من حالات القاعدة الكلية</td></tr>
+        <tr><td>النتيجة</td><td>التعميم من خلال انطباق القاعدة الكلية على الحالة الفردية</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">📝</span>الأمثلة التطبيقية التفصيلية</div>
+    <div class="acc">
+      <div class="acc-hdr" onclick="tAcc(this)">المثال الأول: الرياضيون والعضلات <span class="ch">▼</span></div>
+      <div class="acc-body">
+        <table class="gold-table">
+          <thead><tr><th>المكوّن</th><th>المحتوى</th></tr></thead>
+          <tbody>
+            <tr><td>المقدمة الكبرى</td><td>جميع الرياضيين أناس لديهم عضلات قوية.</td></tr>
+            <tr><td>المقدمة الصغرى</td><td>جميع لاعبي التنس الأرضي المحترفين رياضيون.</td></tr>
+            <tr><td>النتيجة</td><td>جميع لاعبي التنس الأرضي المحترفين أناس لديهم عضلات قوية.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="acc">
+      <div class="acc-hdr" onclick="tAcc(this)">المثال الثاني: التعاون والإنتاج <span class="ch">▼</span></div>
+      <div class="acc-body">
+        <table class="gold-table">
+          <thead><tr><th>المكوّن</th><th>المحتوى</th></tr></thead>
+          <tbody>
+            <tr><td>المقدمة الكبرى</td><td>يؤدي التعاون إلى زيادة الإنتاج.</td></tr>
+            <tr><td>المقدمة الصغرى</td><td>يتعاون طلاب مقرر فلسفات تربوية معاصرة مع بعضهم.</td></tr>
+            <tr><td>النتيجة</td><td>إنتاجية الطلاب في مقرر فلسفات تربوية معاصرة عالية.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SKILL 6: INTERPRETATION ========== -->
+<div class="panel" id="s6">
+  <div class="sec-header">
+    <h2>🌐 المهارة السادسة: مهارة التفسير</h2>
+    <p>Interpretation – إيجاد الأسباب الحقيقية</p>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">📖</span>التعريف الكامل</div>
+    <div class="hl-box sky">
+      <strong>مهارة التفسير:</strong> قدرة الفرد على <strong>رد الظاهرة أو الحدث أو القضية إلى أسبابها الحقيقية</strong>، وتحديد مدى ارتباط النتائج بالمعلومات أو البيانات أو الوقائع المعطاة منطقياً وبغير شك كبير، على افتراض صدق هذه المعلومات أو البيانات.
+    </div>
+    <div class="hl-box">
+      <strong>تعريف إضافي:</strong> التفسير هو القدرة على فهم المواقف والتجارب والأحداث والمعايير والتعبير عن هذه الأوضاع.
+    </div>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">⚙️</span>ماذا تشمل مهارة التفسير؟</div>
+    <table class="gold-table">
+      <thead><tr><th>العنصر</th><th>التوضيح</th></tr></thead>
+      <tbody>
+        <tr><td>القدرة على التصنيف</td><td>تصنيف المعلومات والمواقف وفق فئات منطقية</td></tr>
+        <tr><td>تحديد ما هو مهم</td><td>التمييز بين المعلومات الجوهرية والهامشية</td></tr>
+        <tr><td>محاولة توضيح المعنى</td><td>إعادة صياغة الظاهرة بشكل مفهوم ومنطقي</td></tr>
+        <tr><td>إضفاء معنى على الخبرات</td><td>التفسير عملية عقلية غايتها إضفاء معنى على خبراتنا الحياتية أو استخلاص معنى منها</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">🔎</span>أمثلة تطبيقية: ما التفسيرات المقترحة؟</div>
+    <div class="acc">
+      <div class="acc-hdr" onclick="tAcc(this)">أ. ارتفاع حوادث الطرق في مصر <span class="ch">▼</span></div>
+      <div class="acc-body">
+        <ul>
+          <li>السرعة الزائدة وعدم الالتزام بقواعد المرور.</li>
+          <li>ضعف الوعي المروري وغياب الثقافة الطرقية.</li>
+          <li>سوء حالة بعض الطرق والبنية التحتية.</li>
+          <li>تقادم السيارات وضعف الصيانة الدورية.</li>
+          <li>الإجهاد والنوم أثناء القيادة.</li>
+          <li>التشتت بسبب الهاتف المحمول أثناء القيادة.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc">
+      <div class="acc-hdr" onclick="tAcc(this)">ب. رغبة الآباء بإلحاق أبنائهم بالقسم العلمي <span class="ch">▼</span></div>
+      <div class="acc-body">
+        <ul>
+          <li>الاعتقاد بأن القسم العلمي يُفتح أبواباً مهنية أوسع (طب، هندسة).</li>
+          <li>المكانة الاجتماعية المرتبطة بالتخصصات العلمية.</li>
+          <li>الدخل المادي الأعلى المتوقع من التخصصات العلمية.</li>
+          <li>ضغط المجتمع والثقافة السائدة التي تُقدّر العلوم.</li>
+          <li>طموح الآباء الذي لم يتحقق في أنفسهم.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc">
+      <div class="acc-hdr" onclick="tAcc(this)">ت. الدروس الخصوصية في التعليم المصري <span class="ch">▼</span></div>
+      <div class="acc-body">
+        <ul>
+          <li>ضعف ثقة الطلاب وأولياء الأمور في كفاءة التعليم الحكومي.</li>
+          <li>اكتظاظ الفصول الدراسية وعدم كفاية الشرح.</li>
+          <li>ضغط الامتحانات والتنافس الشديد.</li>
+          <li>التأثير الثقافي والعقلية الجمعية (الجميع يأخذ دروساً فيجب أخذها).</li>
+          <li>ضعف رواتب المعلمين مما يدفع بعضهم للاعتماد على الدروس الخصوصية.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SKILL 7: ARGUMENTATION ========== -->
+<div class="panel" id="s7">
+  <div class="sec-header">
+    <h2>🗣️ المهارة السابعة: مهارة تقويم الحجج</h2>
+    <p>Argumentation – التفنيد والإقناع</p>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">📖</span>التعريفات الكاملة</div>
+    <div class="hl-box sky">
+      <strong>مهارة تقويم الحجج:</strong> قدرة الفرد على <strong>إدراك الجوانب المهمة التي تتصل مباشرة بالقضية أو المشكلة</strong>، والحكم على الآراء المتعلقة بها، مع قدرته على تمييز جوانب القوة والضعف فيها.
+    </div>
+    <div class="hl-box">
+      <strong>المحاجة:</strong> قدرة الفرد على <strong>تفنيد ودحض حجج الطرف الآخر بالأدلة والبراهين الاستدلالية والواقعية</strong>، وحثه على التخلي عنها، والدفاع في الوقت نفسه عن آرائه، وتقديم حجج لإقناع الطرف الآخر بها — وذلك حين يتحاجون حول قضية خلافية.
+    </div>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">⚙️</span>العمليتان الرئيسيتان في المحاجة</div>
+    <div class="example-grid">
+      <div class="ex-card correct">
+        <span class="ex-label">🔨 العملية الأولى: التفنيد</span>
+        <strong>التعريف:</strong> عملية يتم بموجبها إثبات أن صحة حجج الطرف الآخر أو النتيجة المترتبة عليها أو المستمدة منها — <strong>زائفة أو خاطئة</strong>.
+        <br><br>
+        <strong>الهدف:</strong> هدم حجة الخصم وإبطالها.
+      </div>
+      <div class="ex-card" style="background:#E3F2FD; border-color:#64B5F6;">
+        <span class="ex-label" style="color:#1565C0;">💬 العملية الثانية: الإقناع</span>
+        <strong>التعريف:</strong> الاستعانة بمجموعة من الحجج <strong>يستدل منها الفرد على صحة دعواه</strong>.
+        <br><br>
+        <strong>الهدف:</strong> بناء موقفك الخاص بأدلة قوية تقنع الآخرين.
+      </div>
+    </div>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">📝</span>مثال تطبيقي</div>
+    <div class="hl-box rose">
+      <strong>السؤال المطروح للمحاجة:</strong> هل يمكن التنبؤ بتفوق الطالب في الجامعة في ضوء المجموع الذي حصل عليه في الثانوية العامة؟
+    </div>
+    <div class="acc">
+      <div class="acc-hdr" onclick="tAcc(this)">حجج التأييد (نعم، يمكن التنبؤ) <span class="ch">▼</span></div>
+      <div class="acc-body">
+        <ul>
+          <li>المجموع يعكس قدرة الطالب على الالتزام والمثابرة التي تستمر في الجامعة.</li>
+          <li>الدراسات تُظهر ارتباطاً إيجابياً بين التفوق في الثانوية والتفوق الجامعي.</li>
+          <li>المهارات الدراسية المكتسبة في الثانوية تُسهم في النجاح الجامعي.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc">
+      <div class="acc-hdr" onclick="tAcc(this)">حجج المعارضة (لا، لا يمكن التنبؤ بيقين) <span class="ch">▼</span></div>
+      <div class="acc-body">
+        <ul>
+          <li>البيئة الجامعية مختلفة تماماً — الطالب قد يُبدع في مجال تخصص لم يكن مُقيَّماً في الثانوية.</li>
+          <li>قد يكون تفوق الثانوية نتيجة ضغط الأهل والدروس الخصوصية، لا قدرات حقيقية.</li>
+          <li>بعض الطلاب يتأخرون في الثانوية لظروف خارجية لكنهم يتفوقون بعدها.</li>
+          <li>الاهتمام والدافعية بالتخصص المختار أهم من مجموع الثانوية.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="gold-card">
+    <div class="card-title"><span class="icon">🎯</span>مهارات تقويم الحجج في الممارسة</div>
+    <table class="gold-table">
+      <thead><tr><th>الخطوة</th><th>الإجراء</th></tr></thead>
+      <tbody>
+        <tr><td>1. تحديد الحجة</td><td>ما هي القضية الخلافية؟ ما موقف كل طرف؟</td></tr>
+        <tr><td>2. تحليل الأدلة</td><td>هل الأدلة المقدمة واقعية واستدلالية أم مجرد آراء؟</td></tr>
+        <tr><td>3. تقييم القوة والضعف</td><td>ما نقاط القوة في الحجة؟ ما ثغراتها؟</td></tr>
+        <tr><td>4. التفنيد</td><td>أثبت أن نتيجة حجة الخصم خاطئة أو لا تتبع مقدماته.</td></tr>
+        <tr><td>5. الإقناع</td><td>قدّم حججاً متماسكة تثبت صحة موقفك.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ========== QUIZ ========== -->
+<div class="panel" id="sq">
+  <div class="sec-header">
+    <h2>🏆 بنك الأسئلة الذهبي الشامل – الفصل الرابع</h2>
+    <p>80 سؤالاً أكاديمياً تفاعلياً – 50 صح/خطأ + 30 اختيار متعدد</p>
+  </div>
+
+  <div class="quiz-stats">
+    <div class="qstat">📝 الإجمالي: <span>80</span></div>
+    <div class="qstat">✅ صح/خطأ: <span>50</span></div>
+    <div class="qstat">🔵 اختيار متعدد: <span>30</span></div>
+    <div class="qstat">🔑 مكشوفة: <span id="rCount">0</span></div>
+  </div>
+  <div class="prog-wrap"><div class="prog-fill" id="progBar" style="width:0%"></div></div>
+  <div class="qctrl">
+    <button class="qbtn active" onclick="fQ('all',this)">الكل (80)</button>
+    <button class="qbtn" onclick="fQ('tf',this)">صح/خطأ (50)</button>
+    <button class="qbtn" onclick="fQ('mc',this)">اختيار متعدد (30)</button>
+    <button class="qbtn" onclick="revAll()">🔑 كشف الكل</button>
+    <button class="qbtn" onclick="hideAll()">🔒 إخفاء الكل</button>
+  </div>
+  <div id="qCont"></div>
+</div>
+
+</div><!-- /container -->
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆</button>
+
+<script>
+// NAV
+function show(id, btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.skill-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+// ACCORDION
+function tAcc(hdr){
+  const body=hdr.nextElementSibling;
+  hdr.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
+// QUIZ DATA
+const Qs=[
+// ===== TRUE/FALSE (50) =====
+{id:1,type:'tf',text:'الحقيقة هي معلومة تقريرية يمكن ملاحظتها أو التحقق منها أو التأكد من دقتها.',answer:'صح ✅',explain:'هذا هو التعريف الدقيق للحقيقة (الواقعة) في مهارة التفكير النقدي.'},
+{id:2,type:'tf',text:'الرأي يعتمد على الحكم الشخصي والانطباع والاعتقاد.',answer:'صح ✅',explain:'الرأي تعبير عن تقييم شخصي ذاتي.'},
+{id:3,type:'tf',text:'الحقائق تبنى على ما يعتقده الفرد وحده أنه صحيح.',answer:'خطأ ❌',explain:'الآراء هي التي تُبنى على ما يعتقده الفرد، أما الحقائق فتبنى على خبرات عدد كبير من الناس ويمكن إثباتها.'},
+{id:4,type:'tf',text:'الآراء ليست عليها اتفاق عام وتختلف باختلاف الأشخاص.',answer:'صح ✅',explain:'الآراء ذاتية ومتغيرة من شخص لآخر.'},
+{id:5,type:'tf',text:'"تعلم الرياضيات أصعب من تعلم اللغة الإنجليزية" حقيقة علمية ثابتة.',answer:'خطأ ❌',explain:'هذه جملة تقديرية ذاتية تعبّر عن رأي شخصي لا حقيقة موضوعية.'},
+{id:6,type:'tf',text:'الآراء يمكن أن تكتسب وزناً في الأدلة إذا اعتمدت على معلومات موثقة.',answer:'صح ✅',explain:'نص الكتاب صريح: الآراء لا تمثل مادة ذات وزن إلا إذا اعتمدت على المعلومات أو جرى توثيقها بها.'},
+{id:7,type:'tf',text:'الحقائق من المحتمل أن تحدث مستقبلاً فقط.',answer:'خطأ ❌',explain:'الحقائق وقعت أو وجدت في الماضي، أما المحتمل أن يحدث مستقبلاً فيمثل الآراء.'},
+{id:8,type:'tf',text:'"مجموع زوايا المثلث يساوي 180 درجة" هي مثال على الرأي.',answer:'خطأ ❌',explain:'هي حقيقة علمية رياضية ثابتة، لا رأي شخصي.'},
+{id:9,type:'tf',text:'التعرف على الافتراض هو قدرة الفرد على تحديد المسلمات التي ينطلق منها الآخرون.',answer:'صح ✅',explain:'هذا هو تعريف مهارة التعرف على الافتراضات.'},
+{id:10,type:'tf',text:'الافتراض هو الشيء الذي يُسلّم به الشخص ويعتبره بديهياً.',answer:'صح ✅',explain:'الافتراض هو المسلّمة الضمنية التي ينطلق منها الشخص دون أن يُصرّح بها.'},
+{id:11,type:'tf',text:'عندما يقول شخص "سأرتدي معطفي اليوم" فهو يفترض أن الجو صافٍ ودافئ.',answer:'خطأ ❌',explain:'الافتراض الضمني هو أن الجو ممطر وبارد — وهو العكس تماماً.'},
+{id:12,type:'tf',text:'مهارة التعرف على الافتراضات تُعرَّف أيضاً بأنها قضية مسلمة موضوعة للاستدلال بها.',answer:'صح ✅',explain:'هذا التعريف الثاني لمهارة التعرف على الافتراضات في النص.'},
+{id:13,type:'tf',text:'الاستنتاج هو خلاصة عقلية لموقف معين تعتمد على افتراضات سابقة.',answer:'صح ✅',explain:'هذا التعريف الثاني للاستنتاج.'},
+{id:14,type:'tf',text:'الاستنتاج الصحيح يمكن أن يتجاوز المعطيات المتاحة ويخرج عنها.',answer:'خطأ ❌',explain:'الاستنتاج الصحيح يجب أن ينبثق مباشرة من المعطيات ولا يتجاوزها.'},
+{id:15,type:'tf',text:'من المهارات الرئيسية للتفكير النقدي تقدير درجة صحة الاستنتاج في ضوء المعطيات.',answer:'صح ✅',explain:'هذا ما نص عليه الفصل صراحة في مهارة الكشف عن الصحة والخطأ في الاستنتاج.'},
+{id:16,type:'tf',text:'الاستقراء هو انتقال العقل من الأحكام الكلية إلى الحوادث الجزئية.',answer:'خطأ ❌',explain:'هذا تعريف الاستنباط. الاستقراء هو العكس: من الجزئيات إلى القواعد الكلية.'},
+{id:17,type:'tf',text:'الاستقراء يسير من الخاص إلى العام، ومن الجزء إلى الكل.',answer:'صح ✅',explain:'هذا هو اتجاه الاستقراء الأساسي.'},
+{id:18,type:'tf',text:'الاستقراء العلمي مبني على الآراء الذاتية والتصورات الفردية.',answer:'خطأ ❌',explain:'الاستقراء العلمي مبني على الأسس والحقائق العلمية. الاستقراء غير العلمي هو الذي يعتمد الذاتية.'},
+{id:19,type:'tf',text:'التعميم بأن جميع أفراد شعب ما بخلاء بناءً على مشاهدة عينة صغيرة يُعدّ استقراءً علمياً.',answer:'خطأ ❌',explain:'هذا استقراء غير علمي لأنه غير موضوعي ومبني على التصورات الفردية.'},
+{id:20,type:'tf',text:'الاستقراء الكامل يشمل جميع حالات الظاهرة بنسبة 100%.',answer:'صح ✅',explain:'هذا تعريف الاستقراء الكامل (العلمي) من حيث الشمول.'},
+{id:21,type:'tf',text:'الاستقراء الناقص لا يغطي جميع حالات الظاهرة بل عينة منها فقط.',answer:'صح ✅',explain:'هذا تعريف الاستقراء الناقص (غير الكامل).'},
+{id:22,type:'tf',text:'الاستنباط هو عكس الاستقراء.',answer:'صح ✅',explain:'الاستقراء: جزء← كل، والاستنباط: كل← جزء.'},
+{id:23,type:'tf',text:'الاستنباط يعني الانتقال من الجزء إلى الكل.',answer:'خطأ ❌',explain:'هذا تعريف الاستقراء. الاستنباط هو من الكل إلى الجزء.'},
+{id:24,type:'tf',text:'الاستنباط يتكون من ثلاثة مكونات: المقدمة الكبرى والصغرى والنتيجة.',answer:'صح ✅',explain:'هذه المكونات الثلاثة للاستنباط.'},
+{id:25,type:'tf',text:'المقدمة الكبرى في الاستنباط هي حالة فردية من حالات القاعدة الكلية.',answer:'خطأ ❌',explain:'المقدمة الكبرى هي القاعدة الكلية المقبولة والصادقة. المقدمة الصغرى هي الحالة الفردية.'},
+{id:26,type:'tf',text:'في الاستنباط، النتيجة هي التعميم من خلال انطباق القاعدة الكلية على الحالة الفردية.',answer:'صح ✅',explain:'هذا تعريف النتيجة في الاستنباط.'},
+{id:27,type:'tf',text:'مهارة التفسير تتضمن القدرة على التصنيف وتحديد ما هو مهم.',answer:'صح ✅',explain:'مهارة التفسير تشمل: التصنيف، تحديد المهم، محاولة توضيح المعنى.'},
+{id:28,type:'tf',text:'التفسير عملية عقلية غايتها إضفاء معنى على خبراتنا الحياتية أو استخلاص معنى منها.',answer:'صح ✅',explain:'هذا تعريف التفسير كعملية عقلية في النص.'},
+{id:29,type:'tf',text:'مهارة تقويم الحجج لا تتضمن تمييز جوانب القوة والضعف في الآراء.',answer:'خطأ ❌',explain:'مهارة تقويم الحجج تشمل صراحةً تمييز جوانب القوة والضعف في الآراء المتعلقة بالقضية.'},
+{id:30,type:'tf',text:'المحاجة تتضمن عمليتين رئيسيتين هما: التفنيد والإقناع.',answer:'صح ✅',explain:'هذا ما نص عليه الفصل صراحة.'},
+{id:31,type:'tf',text:'التفنيد يعني الاستعانة بمجموعة من الحجج للاستدلال على صحة دعوى الفرد.',answer:'خطأ ❌',explain:'هذا تعريف الإقناع. التفنيد هو إثبات أن حجة الطرف الآخر زائفة أو خاطئة.'},
+{id:32,type:'tf',text:'الإقناع في المحاجة يعني الاستعانة بمجموعة من الحجج يستدل منها الفرد على صحة دعواه.',answer:'صح ✅',explain:'هذا تعريف الإقناع كعملية في المحاجة.'},
+{id:33,type:'tf',text:'الاستنتاج الذي يتجاوز ما تدعمه المعطيات يُعدّ استنتاجاً صحيحاً.',answer:'خطأ ❌',explain:'الاستنتاج الذي يتجاوز المعطيات يُعدّ استنتاجاً خاطئاً.'},
+{id:34,type:'tf',text:'في مثال الرياضيين: "جميع لاعبي التنس الأرضي المحترفين رياضيون" هي المقدمة الكبرى.',answer:'خطأ ❌',explain:'هي المقدمة الصغرى (الحالة الفردية). المقدمة الكبرى هي: "جميع الرياضيين لديهم عضلات قوية".'},
+{id:35,type:'tf',text:'التفسير يشمل القدرة على فهم المواقف والتجارب والأحداث والمعايير.',answer:'صح ✅',explain:'هذه عناصر التفسير كما وردت في النص.'},
+{id:36,type:'tf',text:'الاستقراء العلمي مثاله: "رصد بعض سلوكيات فئة معينة ثم التعميم على جميع أفرادها".',answer:'خطأ ❌',explain:'هذا مثال الاستقراء غير العلمي (التعميم الخاطئ). الاستقراء العلمي مثاله: الحديد والنحاس والألمنيوم تتمدد → المعادن تتمدد.'},
+{id:37,type:'tf',text:'الآراء مفيدة في تشكيل وتقييم تفكير الفرد.',answer:'صح ✅',explain:'نص الكتاب صريح بأن الآراء تُعدّ ذات فائدة في تشكيل وتقييم تفكير الفرد.'},
+{id:38,type:'tf',text:'الاستقراء الناقص لا قيمة له علمياً ويجب تجاهله.',answer:'خطأ ❌',explain:'الاستقراء الناقص مقبول إذا طُبّق على عينة كبيرة وممثلة — وهذا ما يفعله العلماء عملياً.'},
+{id:39,type:'tf',text:'مهارة تقويم الحجج تُركّز فقط على حجج طرف واحد.',answer:'خطأ ❌',explain:'تقويم الحجج يشمل إدراك جميع الجوانب المهمة والحكم على آراء متعددة مع تمييز القوة والضعف.'},
+{id:40,type:'tf',text:'الاستنتاج يأتي من معطيات أو سياقات تحمل في طياتها ما يدعم نتيجة ما.',answer:'صح ✅',explain:'هذا وصف النص لكيفية نشوء الاستنتاج.'},
+{id:41,type:'tf',text:'الحقائق تحوي معلومات رقمية وأمثلة محددة.',answer:'صح ✅',explain:'من خصائص الحقائق أنها تحتوي على أرقام ومعلومات واضحة ودقيقة.'},
+{id:42,type:'tf',text:'الآراء تحوي مقولات عامة أثبتت صحتها بصورة فعلية.',answer:'خطأ ❌',explain:'الآراء ليست أكثر من مقولات عامة لم تُثبت بصورة فعلية.'},
+{id:43,type:'tf',text:'المحاجة تحدث حين يتحاجون حول قضية خلافية.',answer:'صح ✅',explain:'هذا شرط وسياق المحاجة كما نص عليه الفصل.'},
+{id:44,type:'tf',text:'التفسير عملية عقلية تقتصر على رد الظواهر لأسبابها فقط دون توضيح المعنى.',answer:'خطأ ❌',explain:'التفسير يشمل أيضاً: التصنيف، تحديد المهم، ومحاولة توضيح المعنى.'},
+{id:45,type:'tf',text:'من الاستقراء الكامل: سؤال كل طلاب السنة التمهيدية عن درجاتهم والاستنتاج بنجاح جميعهم.',answer:'صح ✅',explain:'استقراء كامل لأنه شمل جميع الطلاب (100%) وليس عينة منهم.'},
+{id:46,type:'tf',text:'الافتراض يكون دائماً مُصرَّحاً به ومعلناً.',answer:'خطأ ❌',explain:'الافتراض هو ما يسلّم به الشخص بديهياً — أي ضمنياً وغير مُصرَّح به.'},
+{id:47,type:'tf',text:'التعرف على الافتراض ينطبق فقط على ما يكتبه الشخص لا ما يقوله أو يفعله.',answer:'خطأ ❌',explain:'التعرف على الافتراض يطبق على أقوال وأفعال وكتابات الشخص معاً.'},
+{id:48,type:'tf',text:'"المدارس الخاصة أفضل من المدارس الحكومية" هي رأي وليس حقيقة.',answer:'صح ✅',explain:'إنها حكم تقييمي ذاتي يختلف من شخص لآخر، لذا هي رأي.'},
+{id:49,type:'tf',text:'من أهداف الاستقراء: البحث عن الجزئيات للوصول إلى قاعدة عامة.',answer:'صح ✅',explain:'هذا هو الغرض من مهارة الاستقراء.'},
+{id:50,type:'tf',text:'عملية التفنيد في المحاجة تهدف إلى إثبات صحة حجج الطرف الآخر.',answer:'خطأ ❌',explain:'التفنيد يهدف إلى إثبات أن حجج الطرف الآخر زائفة أو خاطئة — العكس تماماً.'},
+
+// ===== MCQ (30) =====
+{id:51,type:'mc',text:'أيٌّ من التالي يُمثّل حقيقة (واقعة) لا رأياً؟',options:['أ. المدارس الخاصة أفضل من الحكومية','ب. تُقسم الكلمة إلى اسم وفعل وحرف','ج. تعلم الرياضيات أصعب من الإنجليزية','د. تخصص الطب البيطري أفضل من البشري'],answer:'ب. تُقسم الكلمة إلى اسم وفعل وحرف',explain:'هذه حقيقة نحوية لغوية ثابتة يتفق عليها الجميع ويمكن إثباتها.'},
+{id:52,type:'mc',text:'ما الفرق الجوهري بين الحقيقة والرأي؟',options:['أ. الحقيقة ذاتية والرأي موضوعي','ب. الحقيقة موضوعية قابلة للإثبات والرأي تقييم شخصي','ج. كلاهما متماثلان في القيمة المعرفية','د. الرأي أكثر موثوقية من الحقيقة دائماً'],answer:'ب. الحقيقة موضوعية قابلة للإثبات والرأي تقييم شخصي',explain:'هذا الفرق الجوهري: الحقيقة يتفق عليها ويمكن إثباتها، والرأي ذاتي يختلف باختلاف الأشخاص.'},
+{id:53,type:'mc',text:'ما الافتراض الضمني في قول: "سأحمل مظلتي غداً"؟',options:['أ. الطقس سيكون صافياً وجميلاً','ب. الشخص يكره المطر','ج. الجو من المحتمل أن يكون ممطراً','د. المظلة ستتعطل غداً'],answer:'ج. الجو من المحتمل أن يكون ممطراً',explain:'الافتراض الضمني هو السبب المنطقي الذي يجعل حمل المظلة منطقياً.'},
+{id:54,type:'mc',text:'الاستنتاج يُعرَّف بأنه:',options:['أ. نتيجة عشوائية لا تستند إلى بيانات','ب. نتيجة يستخلصها الشخص من معلومات أو وقائع لوحظت أو افترضت','ج. قاعدة كلية مقبولة وصادقة','د. رأي شخصي لا يستند إلى أي دليل'],answer:'ب. نتيجة يستخلصها الشخص من معلومات أو وقائع لوحظت أو افترضت',explain:'هذا هو التعريف الدقيق لمهارة الاستنتاج في الفصل الرابع.'},
+{id:55,type:'mc',text:'في مثال مسابقة الطالب المثالي حيث نال خالد أغلب الأصوات: الاستنتاج بأن الطلاب الآخرين غير متفوقين اجتماعياً يُعدّ:',options:['أ. صحيحاً لأن خالد حصل على أغلب الأصوات','ب. خاطئاً لأن الطلاب الآخرين نالوا أصواتاً أيضاً','ج. محايداً لا صحيح ولا خاطئ','د. صحيحاً جزئياً'],answer:'ب. خاطئاً لأن الطلاب الآخرين نالوا أصواتاً أيضاً',explain:'لو كانوا غير متفوقين اجتماعياً لما نال أحد منهم أي أصوات — النتيجة تتجاوز ما تدعمه المعطيات.'},
+{id:56,type:'mc',text:'الاستقراء العلمي يتميز بأنه:',options:['أ. مبني على التصورات الفردية الذاتية','ب. يُعمّم من عينة صغيرة غير ممثلة','ج. مبني على الأسس والحقائق العلمية لا الآراء الذاتية','د. يقتصر على الحوادث المستقبلية'],answer:'ج. مبني على الأسس والحقائق العلمية لا الآراء الذاتية',explain:'هذا المعيار الفاصل بين الاستقراء العلمي وغير العلمي.'},
+{id:57,type:'mc',text:'أيٌّ من التالي مثال على الاستقراء غير العلمي؟',options:['أ. الحديد يتمدد، النحاس يتمدد، الألمنيوم يتمدد → المعادن تتمدد','ب. التعميم بأن شعباً بأكمله بخيل بناءً على مشاهدة بعض أفراده','ج. سؤال كل طلاب الصف عن نتائجهم والاستنتاج الكلي','د. كل الأمثلة في الفصل'],answer:'ب. التعميم بأن شعباً بأكمله بخيل بناءً على مشاهدة بعض أفراده',explain:'هذا استقراء غير علمي لأنه مبني على تصورات فردية وتعميم غير موضوعي.'},
+{id:58,type:'mc',text:'ما الفرق الجوهري بين الاستقراء والاستنباط؟',options:['أ. كلاهما ينتقل من الجزء إلى الكل','ب. الاستقراء: جزء←كل والاستنباط: كل←جزء','ج. الاستنباط: جزء←كل والاستقراء: كل←جزء','د. لا فرق بينهما'],answer:'ب. الاستقراء: جزء←كل والاستنباط: كل←جزء',explain:'هذا الفرق الجوهري والأساسي بين المهارتين.'},
+{id:59,type:'mc',text:'في الاستنباط، ما الذي يمثّله "جميع الرياضيين أناس لديهم عضلات قوية"؟',options:['أ. النتيجة','ب. المقدمة الصغرى','ج. المقدمة الكبرى','د. الافتراض الضمني'],answer:'ج. المقدمة الكبرى',explain:'المقدمة الكبرى هي القاعدة الكلية المقبولة والصادقة.'},
+{id:60,type:'mc',text:'مهارة التفسير تُعرَّف بأنها:',options:['أ. القدرة على حفظ المعلومات واسترجاعها','ب. قدرة الفرد على رد الظاهرة إلى أسبابها الحقيقية وتحديد ارتباط النتائج بالمعطيات','ج. مهارة التعرف على الافتراضات الضمنية','د. القدرة على تفنيد حجج الطرف الآخر'],answer:'ب. قدرة الفرد على رد الظاهرة إلى أسبابها الحقيقية وتحديد ارتباط النتائج بالمعطيات',explain:'هذا التعريف الكامل لمهارة التفسير.'},
+{id:61,type:'mc',text:'كم عدد مهارات التفكير النقدي التي يتناولها الفصل الرابع؟',options:['أ. 5 مهارات','ب. 6 مهارات','ج. 7 مهارات','د. 8 مهارات'],answer:'ج. 7 مهارات',explain:'المهارات السبع: التمييز بين الحقائق والآراء، الافتراضات، الاستنتاج، الاستقراء، الاستنباط، التفسير، تقويم الحجج.'},
+{id:62,type:'mc',text:'أيٌّ من التالي يُعدّ استقراءً كاملاً؟',options:['أ. سؤال عينة من طلاب الصف عن نتائجهم','ب. سؤال كل طلاب السنة التمهيدية للدكتوراه عن درجاتهم والاستنتاج بنجاح جميعهم','ج. الاستنتاج من حالة واحدة','د. التعميم من ملاحظة شخصية'],answer:'ب. سؤال كل طلاب السنة التمهيدية للدكتوراه عن درجاتهم والاستنتاج بنجاح جميعهم',explain:'استقراء كامل لأنه شمل جميع الحالات (100%) لا عينة منها.'},
+{id:63,type:'mc',text:'ما العمليتان الرئيسيتان في المحاجة وفق الفصل الرابع؟',options:['أ. التحليل والتركيب','ب. التفنيد والإقناع','ج. الاستقراء والاستنباط','د. الملاحظة والتجربة'],answer:'ب. التفنيد والإقناع',explain:'المحاجة تتضمن عمليتين رئيسيتين: التفنيد (دحض حجة الخصم) والإقناع (بناء حجتك).'},
+{id:64,type:'mc',text:'أيٌّ من التالي مثال على الافتراض الضمني في قول "سيتخرج أحمد في يونيه"؟',options:['أ. أحمد طالب في السنة الأولى','ب. أحمد سيسافر بعد التخرج','ج. أحمد سيعيش حتى يونيه وسينجح في مقرراته','د. الجامعة ستُلغي التخرج هذا العام'],answer:'ج. أحمد سيعيش حتى يونيه وسينجح في مقرراته',explain:'هذه المسلّمات الضمنية التي ينطلق منها الشخص حين يقول ذلك.'},
+{id:65,type:'mc',text:'ما المقدمة الصغرى في الاستنباط؟',options:['أ. قاعدة كلية مقبولة وصادقة','ب. النتيجة المستخلصة','ج. حالة فردية من حالات القاعدة الكلية','د. الافتراض الضمني'],answer:'ج. حالة فردية من حالات القاعدة الكلية',explain:'المقدمة الصغرى تتضمن حالة جزئية فردية تندرج تحت القاعدة الكلية في المقدمة الكبرى.'},
+{id:66,type:'mc',text:'مثال على الاستقراء العلمي (من حيث الصحة):',options:['أ. رصد بخل بعض الأفراد والتعميم على الشعب كله','ب. الحديد والنحاس والألمنيوم تتمدد → إذاً المعادن تتمدد','ج. الاعتقاد بأن جميع السياسيين فاسدون','د. لا يوجد مثال صحيح'],answer:'ب. الحديد والنحاس والألمنيوم تتمدد → إذاً المعادن تتمدد',explain:'هذا المثال الوارد في النص للاستقراء العلمي المبني على حقائق موضوعية.'},
+{id:67,type:'mc',text:'أيٌّ من التالي يُعدّ من مهام مهارة التفسير؟',options:['أ. تفنيد حجج الطرف الآخر','ب. التصنيف وتحديد ما هو مهم ومحاولة توضيح المعنى','ج. وضع الافتراضات الضمنية','د. الانتقال من الكل إلى الجزء'],answer:'ب. التصنيف وتحديد ما هو مهم ومحاولة توضيح المعنى',explain:'هذه عناصر مهارة التفسير الثلاثة كما نص عليها الفصل.'},
+{id:68,type:'mc',text:'ما النتيجة في استنباط: "الرياضيون لديهم عضلات قوية + لاعبو التنس رياضيون"؟',options:['أ. بعض لاعبي التنس ليسوا رياضيين','ب. جميع لاعبي التنس الأرضي المحترفين لديهم عضلات قوية','ج. الرياضيون ليسوا جميعهم لاعبي تنس','د. العضلات القوية تجعل الشخص لاعب تنس'],answer:'ب. جميع لاعبي التنس الأرضي المحترفين لديهم عضلات قوية',explain:'هذه النتيجة المنطقية الصحيحة لهذا الاستنباط.'},
+{id:69,type:'mc',text:'الآراء المعارضة والمؤيدة لقضية ما تصلح كـ:',options:['أ. مصدر لإصدار الأحكام العلمية القاطعة','ب. خلفية يمكن للمرء أن يقيّم أو يقيس تفكيره عليها','ج. بديل كامل عن الحقائق','د. دليل قاطع على الحقيقة'],answer:'ب. خلفية يمكن للمرء أن يقيّم أو يقيس تفكيره عليها',explain:'نص الفصل: التعرض لكل من الآراء المعارضة والمؤيدة يكون خلفية يمكن للمرء أن يقيم تفكيره عليها.'},
+{id:70,type:'mc',text:'ما الذي يُميّز الاستقراء الناقص عن الكامل؟',options:['أ. الاستقراء الناقص يشمل جميع الحالات','ب. الاستقراء الناقص يعتمد على عينة وليس جميع الحالات','ج. الاستقراء الناقص دائماً خاطئ ولا قيمة له','د. لا فرق بينهما'],answer:'ب. الاستقراء الناقص يعتمد على عينة وليس جميع الحالات',explain:'الاستقراء الكامل: 100% من الحالات. الاستقراء الناقص: عينة منها فقط — لكنه مقبول مع عينة كبيرة وممثلة.'},
+{id:71,type:'mc',text:'التفنيد في المحاجة يعني:',options:['أ. قبول حجج الطرف الآخر','ب. إثبات أن حجج الطرف الآخر أو نتائجها زائفة أو خاطئة','ج. الاستعانة بحجج لإثبات صحة دعواك','د. تجاهل الطرف الآخر'],answer:'ب. إثبات أن حجج الطرف الآخر أو نتائجها زائفة أو خاطئة',explain:'هذا التعريف الدقيق للتفنيد كعملية في المحاجة.'},
+{id:72,type:'mc',text:'أيٌّ من الاستقراءات التالية يُعدّ ناقصاً؟',options:['أ. سؤال كل طلاب مقرر عن درجاتهم والاستنتاج بنجاح جميعهم','ب. ملاحظة تمدد الحديد والنحاس والألمنيوم والاستنتاج بأن المعادن تتمدد','ج. إحصاء كل الطلاب في قسم ما وتسجيل درجاتهم','د. لا يوجد'],answer:'ب. ملاحظة تمدد الحديد والنحاس والألمنيوم والاستنتاج بأن المعادن تتمدد',explain:'هو ناقص لأنه لا يشمل جميع المعادن في الكرة الأرضية، بل عينة منها — رغم كونه علمياً من حيث الصحة.'},
+{id:73,type:'mc',text:'مهارة تقويم الحجج تُعرَّف بأنها قدرة الفرد على:',options:['أ. حفظ الحجج وتكرارها','ب. إدراك الجوانب المهمة المتصلة بالقضية والحكم على الآراء وتمييز القوة والضعف فيها','ج. قبول جميع الحجج المطروحة','د. الانتقال من الجزء إلى الكل'],answer:'ب. إدراك الجوانب المهمة المتصلة بالقضية والحكم على الآراء وتمييز القوة والضعف فيها',explain:'هذا التعريف الكامل لمهارة تقويم الحجج.'},
+{id:74,type:'mc',text:'في استنباط "التعاون يزيد الإنتاج + طلاب المقرر يتعاونون"، ما النتيجة؟',options:['أ. التعاون ليس مفيداً دائماً','ب. إنتاجية الطلاب في المقرر عالية','ج. الطلاب لا يتعاونون كفاية','د. يجب زيادة التعاون'],answer:'ب. إنتاجية الطلاب في المقرر عالية',explain:'النتيجة المنطقية: انطباق قاعدة "التعاون يزيد الإنتاج" على حالة "طلاب المقرر المتعاونين".'},
+{id:75,type:'mc',text:'الاستنتاج الصحيح بأن هناك علاقة بين الذكاء والتفوق الدراسي استُند فيه إلى:',options:['أ. رأي الباحث الشخصي فقط','ب. بيانات تُظهر أن المتفوقين في اختبار الذكاء هم أوائل الشعبة في المواد الدراسية','ج. افتراضات ضمنية غير مدعومة','د. تعميم من حالة واحدة'],answer:'ب. بيانات تُظهر أن المتفوقين في اختبار الذكاء هم أوائل الشعبة في المواد الدراسية',explain:'الاستنتاج صحيح لأنه انبثق مباشرة من البيانات الموضوعية التي أظهرها الاختبار.'},
+{id:76,type:'mc',text:'ما الهدف الرئيسي من مهارة التفسير؟',options:['أ. قبول الظواهر كما هي دون تساؤل','ب. إضفاء معنى على خبراتنا الحياتية أو استخلاص معنى منها','ج. تفنيد آراء الآخرين','د. حفظ المعلومات وتخزينها'],answer:'ب. إضفاء معنى على خبراتنا الحياتية أو استخلاص معنى منها',explain:'هذا هو الغرض الجوهري من مهارة التفسير كعملية عقلية.'},
+{id:77,type:'mc',text:'أيٌّ من السمات التالية ينطبق على الحقائق دون الآراء؟',options:['أ. يختلف فيها الناس باختلاف وجهات النظر','ب. عدد كبير من الناس لا يتقبلونها','ج. يمكن إثباتها ويتفق عليها الجمهور','د. مبنية على ما يعتقده الفرد وحده'],answer:'ج. يمكن إثباتها ويتفق عليها الجمهور',explain:'قابلية الإثبات والاتفاق العام هما من أبرز خصائص الحقائق.'},
+{id:78,type:'mc',text:'أيٌّ من التالي يصف المحاجة بشكل صحيح؟',options:['أ. قبول آراء الطرف الآخر دون نقاش','ب. التعامل مع قضايا مُجمَع عليها','ج. تفنيد حجج الخصم والدفاع عن الرأي وإقناع الآخرين حول قضية خلافية','د. جمع المعلومات دون تقييمها'],answer:'ج. تفنيد حجج الخصم والدفاع عن الرأي وإقناع الآخرين حول قضية خلافية',explain:'هذا الوصف الشامل للمحاجة كما وردت في الفصل.'},
+{id:79,type:'mc',text:'ما الذي يجعل الاستقراء غير علمي (من حيث الصحة والخطأ)؟',options:['أ. اعتماده على الحقائق العلمية','ب. شموله جميع الحالات','ج. بناؤه على الآراء الذاتية والتصورات الفردية','د. استخدامه عينة كبيرة وممثلة'],answer:'ج. بناؤه على الآراء الذاتية والتصورات الفردية',explain:'الاستقراء غير العلمي يعتمد الذاتية وينتج في الغالب استقراءات خاطئة.'},
+{id:80,type:'mc',text:'أيٌّ من المهارات التالية يُعنى بالانتقال من المثال إلى القاعدة؟',options:['أ. مهارة التفسير','ب. مهارة الاستنباط','ج. مهارة تقويم الحجج','د. مهارة الاستقراء'],answer:'د. مهارة الاستقراء',explain:'الاستقراء ينتقل من المثال والجزء إلى القاعدة والكل.'},
+];
+
+let revealed=0;
+function renderQ(filter){
+  const c=document.getElementById('qCont');
+  c.innerHTML='';
+  const list=filter==='all'?Qs:Qs.filter(q=>q.type===filter);
+  list.forEach(q=>{
+    const card=document.createElement('div');
+    card.className='q-card';
+    card.id='qcard-'+q.id;
+    const badge=q.type==='tf'?'<span class="q-badge tf">✅ صح أو خطأ</span>':'<span class="q-badge mc">🔵 اختيار متعدد</span>';
+    let opts='';
+    if(q.options) opts='<div class="q-opts">'+q.options.map(o=>`<div class="q-opt">${o}</div>`).join('')+'</div>';
+    card.innerHTML=`
+      <div class="q-hdr">
+        <div class="q-num">${q.id}</div>
+        <div style="flex:1">${badge}<div class="q-text">${q.text}</div></div>
+      </div>
+      ${opts}
+      <button class="reveal-btn" onclick="revQ(${q.id})">🔑 اكشف الإجابة النموذجية</button>
+      <div class="ans-box" id="ans-${q.id}">
+        <div class="ans-label">🏆 الإجابة النموذجية</div>
+        <div class="ans-text">${q.answer}</div>
+        <div class="ans-explain">💡 <strong>التوضيح:</strong> ${q.explain}</div>
+      </div>`;
+    c.appendChild(card);
+  });
+}
+function revQ(id){
+  const box=document.getElementById('ans-'+id);
+  if(!box.classList.contains('visible')){
+    box.classList.add('visible');
+    revealed++;
+    document.getElementById('rCount').textContent=revealed;
+    document.getElementById('progBar').style.width=Math.round(revealed/80*100)+'%';
+  }
+}
+function fQ(type,btn){
+  document.querySelectorAll('.qbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderQ(type);
+}
+function revAll(){
+  document.querySelectorAll('.ans-box').forEach(b=>{if(!b.classList.contains('visible')){b.classList.add('visible');revealed++;}});
+  document.getElementById('rCount').textContent=revealed;
+  document.getElementById('progBar').style.width='100%';
+}
+function hideAll(){
+  document.querySelectorAll('.ans-box').forEach(b=>b.classList.remove('visible'));
+  revealed=0;
+  document.getElementById('rCount').textContent=0;
+  document.getElementById('progBar').style.width='0%';
+}
+renderQ('all');
+</script>
+</body>
+</html>
